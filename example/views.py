@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.core.urlresolvers import reverse
-from django.db import transaction
-from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 
 from base.view_utils import BaseMixin
 
+from stock.models import Product
 
-class HomeView(TemplateView):
 
+class HomeView(BaseMixin, ListView):
+
+    model = Product
     template_name = 'example/home.html'

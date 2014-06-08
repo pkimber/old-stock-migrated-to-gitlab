@@ -1,4 +1,4 @@
-{% extends "pay/base.html" %}
+{% extends "stock/base.html" %}
 {% load staticfiles %}
 
 {% block sub_title %}
@@ -16,29 +16,27 @@
         <table class="pure-table pure-table-bordered">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Product</th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Description</th>
               <th>Price</th>
-              <th>Quantity</th>
-              <th>Status</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {% for p in object_list %}
               <tr valign="top">
-                <td>{{ p.title }}</td>
-                <td>{{ p.product.title }}</td>
-                <td>{{ p.product.price }}</td>
-                <td>{{ p.quantity }}</td>
-                <td><strong>{{ p.payment_state.name }}</strong></td>
+                <td>{{ p.pk }}</td>
+                <td>{{ p.name }}</td>
                 <td>
-                  {% if p.can_pay %}
-                    <a href="{% url 'example.checkout' p.pk %}">
-                      Pay
-                    </a>
-                  {% endif %}
+                  {{ p.category.name }}
+                  <small>
+                    <br />
+                    {{ p.category.product_type.name }}
+                  </small>
                 </td>
+                <td>{{ p.description }}</td>
+                <td>{{ p.price }}</td>
               </tr>
             {% endfor %}
           </tbody>
