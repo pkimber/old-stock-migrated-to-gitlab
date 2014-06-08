@@ -1,5 +1,5 @@
-recursive-include pay/static *
-recursive-include pay/templates *
+recursive-include stock/static *
+recursive-include stock/templates *
 
 include LICENSE
 include README
