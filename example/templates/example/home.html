@@ -1,0 +1,49 @@
+{% extends "pay/base.html" %}
+{% load staticfiles %}
+
+{% block sub_title %}
+  Example app
+{% endblock sub_title %}
+
+{% block sub_heading %}
+  Example app
+{% endblock sub_heading %}
+
+{% block content %}
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      <div class="l-box">
+        <table class="pure-table pure-table-bordered">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in object_list %}
+              <tr valign="top">
+                <td>{{ p.title }}</td>
+                <td>{{ p.product.title }}</td>
+                <td>{{ p.product.price }}</td>
+                <td>{{ p.quantity }}</td>
+                <td><strong>{{ p.payment_state.name }}</strong></td>
+                <td>
+                  {% if p.can_pay %}
+                    <a href="{% url 'example.checkout' p.pk %}">
+                      Pay
+                    </a>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
