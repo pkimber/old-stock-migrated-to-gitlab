@@ -31,6 +31,9 @@ urlpatterns = patterns(
         view=RedirectView.as_view(url=reverse_lazy('project.home')),
         name='project.home.user'
         ),
+    url(regex=r'^stock/',
+        view=include('stock.urls')
+        ),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

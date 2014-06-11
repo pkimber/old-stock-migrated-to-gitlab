@@ -1,0 +1,50 @@
+{% extends "stock/base.html" %}
+
+{% block title %}
+  Product list
+{% endblock title %}
+
+{% block sub_heading %}
+  Product list
+{% endblock sub_heading %}
+
+{% block content %}
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      <div class="l-box">
+        <table class="pure-table pure-table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for o in object_list %}
+              <tr valign="top">
+                <td>
+                  {{ o.pk }}
+                </td>
+                <td>
+                  {{ o.name }}
+                  <br />
+                  <small>
+                    {{ o.category.name }}
+                  </small>
+                </td>
+                <td>
+                  {{ o.description }}
+                </td>
+                <td>
+                  {{ o.price }}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

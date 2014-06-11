@@ -12,35 +12,15 @@
 {% block content %}
   <div class="pure-g-r">
     <div class="pure-u-1">
-      <div class="l-box">
-        <table class="pure-table pure-table-bordered">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Description</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for p in object_list %}
-              <tr valign="top">
-                <td>{{ p.pk }}</td>
-                <td>{{ p.name }}</td>
-                <td>
-                  {{ p.category.name }}
-                  <small>
-                    <br />
-                    {{ p.category.product_type.name }}
-                  </small>
-                </td>
-                <td>{{ p.description }}</td>
-                <td>{{ p.price }}</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+      <div class="pure-menu pure-menu-open pure-menu-horizontal">
+        <ul>
+          <li>
+            <a href="{% url 'stock.product.list' %}">
+              <i class="fa fa-barcode"></i>
+              Product list
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
