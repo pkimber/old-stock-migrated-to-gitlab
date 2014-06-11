@@ -27,6 +27,17 @@ class TestViewPerm(PermTestCase):
             'Pencil', 'pencil', '', Decimal('1.32'), stationery
         )
 
+    def test_product_create(self):
+        url = reverse('stock.product.create')
+        self.assert_staff_only(url)
+
     def test_product_list(self):
         url = reverse('stock.product.list')
+        self.assert_staff_only(url)
+
+    def test_product_update(self):
+        url = reverse(
+            'stock.product.update',
+            kwargs=dict(pk=self.product.pk)
+        )
         self.assert_staff_only(url)
