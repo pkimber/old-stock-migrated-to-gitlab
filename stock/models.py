@@ -60,7 +60,7 @@ class Product(TimeStampedModel):
     legacy = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ('slug',)
+        ordering = ('category__slug', 'name')
         verbose_name = 'Product'
         verbose_name_plural = 'Product'
 

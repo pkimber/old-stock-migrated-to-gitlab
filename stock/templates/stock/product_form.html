@@ -1,0 +1,19 @@
+{% extends 'stock/base.html' %}
+
+{% block sub_title %}
+  Create product
+{% endblock sub_title %}
+
+{% block sub_heading %}
+  Create product
+{% endblock sub_heading %}
+
+{% block content %}
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      <div class="l-box">
+        {% include '_form.html' with legend='Product' %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}
