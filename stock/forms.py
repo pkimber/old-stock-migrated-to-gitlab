@@ -3,7 +3,28 @@ from __future__ import unicode_literals
 
 from base.form_utils import RequiredFieldForm
 
-from .models import Product
+from .models import (
+    Product,
+    ProductBundle,
+)
+
+
+class BundleForm(RequiredFieldForm):
+
+    def __init__(self, *args, **kwargs):
+        super(BundleForm, self).__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update(
+            {'class': 'pure-input-2-3'}
+        )
+
+    class Meta:
+        model = ProductBundle
+        fields = (
+            'name',
+            'slug',
+            'product',
+            'price',
+        )
 
 
 class ProductForm(RequiredFieldForm):

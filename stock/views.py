@@ -15,8 +15,40 @@ from braces.views import (
 
 from base.view_utils import BaseMixin
 
-from .forms import ProductForm
-from .models import Product
+from .forms import (
+    BundleForm,
+    ProductForm,
+)
+from .models import (
+    Product,
+    ProductBundle,
+)
+
+
+class BundleCreateView(
+        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, CreateView):
+
+    form_class = BundleForm
+    model = ProductBundle
+
+    def get_success_url(self):
+        return reverse('stock.bundle.list')
+
+
+class BundleListView(
+        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, ListView):
+
+    model = ProductBundle
+
+
+class BundleUpdateView(
+        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, UpdateView):
+
+    form_class = BundleForm
+    model = ProductBundle
+
+    def get_success_url(self):
+        return reverse('stock.bundle.list')
 
 
 class ProductCreateView(

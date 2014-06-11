@@ -1,11 +1,11 @@
 {% extends "stock/base.html" %}
 
 {% block title %}
-  Product list
+  Product bundle list
 {% endblock title %}
 
 {% block sub_heading %}
-  Product list
+  Product bundle list
 {% endblock sub_heading %}
 
 {% block content %}
@@ -15,15 +15,15 @@
         <div class="pure-menu pure-menu-open pure-menu-horizontal">
           <ul>
             <li>
-              <a href="{% url 'stock.product.create' %}">
-                <i class="fa fa-barcode"></i>
-                Add product
+              <a href="{% url 'stock.bundle.create' %}">
+                <i class="fa fa-cubes"></i>
+                Add bundle
               </a>
             </li>
             <li>
-              <a href="{% url 'stock.bundle.list' %}">
-                <i class="fa fa-cubes"></i>
-                Bundles
+              <a href="{% url 'stock.product.list' %}">
+                <i class="fa fa-barcode"></i>
+                Products
               </a>
             </li>
           </ul>
@@ -32,7 +32,7 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Category</th>
+              <th>Bundle</th>
               <th>Price</th>
             </tr>
           </thead>
@@ -40,26 +40,32 @@
             {% for o in object_list %}
               <tr valign="top">
                 <td>
-                  {% if o.legacy %}
+                  {% if o.product.legacy %}
                     <del>
                   {% endif %}
-                  <a href="{% url 'stock.product.update' o.pk %}">
+                  <a href="{% url 'stock.bundle.update' o.pk %}">
                     <i class="fa fa-edit"></i>
                     {{ o.name }}
                   </a>
                   {% if o.legacy %}
                     </del>
                     <small>
-                      (This is a legacy product)
+                      (This bundle is for a legacy product)
                     </small>
                   {% endif %}
+                  <br />
+                  Bundle for
+                  {{ o.product.name }}
                   {% if o.description %}
                     <br />
                     {{ o.description|linebreaksbr }}
                   {% endif %}
                 </td>
                 <td>
-                  {{ o.category }}
+                  {% for p in o.bundle.all %}
+                    {{ p }}
+                    <br />
+                  {% endfor %}
                 </td>
                 <td>
                   {{ o.price }}
