@@ -1,0 +1,102 @@
+{% extends 'stock/base.html' %}
+
+{% block sub_title %}
+  Product bundle
+{% endblock sub_title %}
+
+{% block sub_heading %}
+  Product bundle
+{% endblock sub_heading %}
+
+{% block content %}
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      <div class="l-box">
+        <div class="pure-menu pure-menu-open pure-menu-horizontal">
+          <ul>
+            <li>
+              <a href="{% url 'stock.bundle.list' %}">
+                <i class="fa fa-long-arrow-left"></i>
+                Bundles
+              </a>
+            </li>
+          </ul>
+        </div>
+        <table class="pure-table pure-table-bordered">
+          <tbody>
+            <tr valign="top">
+              <td>Bundle</td>
+              <td>
+                <a href="{% url 'stock.bundle.update' object.pk %}">
+                  <i class="fa fa-edit"></i>
+                  <strong>{{ object.name }}</strong>
+                </a>
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr valign="top">
+              <td>Slug</td>
+              <td>
+                {{ object.slug }}
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr valign="top">
+              <td>Product</td>
+              <td>
+                {{ object.product.name }}
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr valign="top">
+              <td>Price</td>
+              <td>
+                {{ object.price }}
+              </td>
+              <td>
+              </td>
+            </tr>
+            {% for p in object.bundle.all %}
+              <tr valign="top">
+                <td>
+                  {% if forloop.first %}
+                    Bundle
+                  {% endif %}
+                </td>
+                <td>
+                  {{ p }}
+                </td>
+                <td>
+                  <a href="{% url 'stock.product.update' p.pk %}">
+                    <i class="fa fa-times"></i>
+                    Remove
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+            <tr valign="top">
+              <td></td>
+              <td>
+                <a href="{% url 'stock.bundle.product.add' object.pk %}">
+                  <i class="fa fa-barcode"></i>
+                  Add a product to the bundle
+                </a>
+              </td>
+              <td>
+              </td>
+            </tr>
+
+
+
+
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
