@@ -1,12 +1,19 @@
 # -*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django import forms
+
 from base.form_utils import RequiredFieldForm
 
 from .models import (
     Product,
     ProductBundle,
 )
+
+
+class BundleAddProductForm(forms.Form):
+
+    product = forms.ModelChoiceField(Product.objects.all())
 
 
 class BundleForm(RequiredFieldForm):

@@ -7,8 +7,11 @@ from django.conf.urls import (
 )
 
 from .views import (
+    BundleAddProductView,
     BundleCreateView,
+    BundleDetailView,
     BundleListView,
+    #BundleRemoveProductView,
     BundleUpdateView,
     ProductCreateView,
     ProductListView,
@@ -22,10 +25,22 @@ urlpatterns = patterns(
         view=BundleCreateView.as_view(),
         name='stock.bundle.create'
         ),
+    url(regex=r'^bundle/(?P<pk>\d+)/$',
+        view=BundleDetailView.as_view(),
+        name='stock.bundle.detail'
+        ),
     url(regex=r'^bundle/$',
         view=BundleListView.as_view(),
         name='stock.bundle.list'
         ),
+    url(regex=r'^bundle/(?P<pk>\d+)/product/add/$',
+        view=BundleAddProductView.as_view(),
+        name='stock.bundle.product.add'
+        ),
+    #url(regex=r'^bundle/(?P<bundle_pk>\d+)/product/(?P<product_pk>\d+)/remove/$',
+    #    view=BundleRemoveProductView.as_view(),
+    #    name='stock.bundle.product.remove'
+    #    ),
     url(regex=r'^bundle/(?P<pk>\d+)/update/$',
         view=BundleUpdateView.as_view(),
         name='stock.bundle.update'

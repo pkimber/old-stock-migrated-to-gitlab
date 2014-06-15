@@ -16,8 +16,7 @@
           <ul>
             <li>
               <a href="{% url 'stock.bundle.list' %}">
-                <i class="fa fa-long-arrow-left"></i>
-                Bundles
+                <i class="fa fa-reply"></i>
               </a>
             </li>
           </ul>
@@ -67,6 +66,7 @@
                   {% endif %}
                 </td>
                 <td>
+                  {{ forloop.counter }})
                   {{ p }}
                 </td>
                 <td>
@@ -82,7 +82,13 @@
               <td>
                 <a href="{% url 'stock.bundle.product.add' object.pk %}">
                   <i class="fa fa-barcode"></i>
-                  Add a product to the bundle
+                  Add
+                  {% if object.bundle and object.bundle.count %}
+                    another
+                  {% else %}
+                    a
+                  {% endif %}
+                  product to the bundle
                 </a>
               </td>
               <td>

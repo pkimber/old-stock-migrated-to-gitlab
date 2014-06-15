@@ -43,8 +43,7 @@
                   {% if o.product.legacy %}
                     <del>
                   {% endif %}
-                  <a href="{% url 'stock.bundle.update' o.pk %}">
-                    <i class="fa fa-edit"></i>
+                  <a href="{% url 'stock.bundle.detail' o.pk %}">
                     {{ o.name }}
                   </a>
                   {% if o.legacy %}
@@ -54,8 +53,10 @@
                     </small>
                   {% endif %}
                   <br />
-                  Bundle for
-                  {{ o.product.name }}
+                  <small>
+                    Bundle for
+                    {{ o.product.name }}
+                  </small>
                   {% if o.description %}
                     <br />
                     {{ o.description|linebreaksbr }}
@@ -63,6 +64,7 @@
                 </td>
                 <td>
                   {% for p in o.bundle.all %}
+                    {{ forloop.counter }})
                     {{ p }}
                     <br />
                   {% endfor %}
