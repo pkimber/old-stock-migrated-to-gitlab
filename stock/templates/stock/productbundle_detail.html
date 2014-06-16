@@ -53,7 +53,7 @@
             <tr valign="top">
               <td>Price</td>
               <td>
-                {{ object.price }}
+                £{{ object.price }}
               </td>
               <td>
               </td>
@@ -67,10 +67,10 @@
                 </td>
                 <td>
                   {{ forloop.counter }})
-                  {{ p }}
+                  {{ p }} £{{ p.price }}
                 </td>
                 <td>
-                  <a href="{% url 'stock.product.update' p.pk %}">
+                  <a href="{% url 'stock.bundle.product.remove' object.pk p.pk %}">
                     <i class="fa fa-times"></i>
                     Remove
                   </a>

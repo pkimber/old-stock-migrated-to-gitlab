@@ -34,6 +34,11 @@ class BundleForm(RequiredFieldForm):
         )
 
 
+class EmptyForm(forms.Form):
+
+    pass
+
+
 class ProductForm(RequiredFieldForm):
 
     def __init__(self, *args, **kwargs):

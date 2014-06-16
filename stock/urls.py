@@ -11,7 +11,7 @@ from .views import (
     BundleCreateView,
     BundleDetailView,
     BundleListView,
-    #BundleRemoveProductView,
+    BundleRemoveProductView,
     BundleUpdateView,
     ProductCreateView,
     ProductListView,
@@ -37,10 +37,10 @@ urlpatterns = patterns(
         view=BundleAddProductView.as_view(),
         name='stock.bundle.product.add'
         ),
-    #url(regex=r'^bundle/(?P<bundle_pk>\d+)/product/(?P<product_pk>\d+)/remove/$',
-    #    view=BundleRemoveProductView.as_view(),
-    #    name='stock.bundle.product.remove'
-    #    ),
+    url(regex=r'^bundle/(?P<bundle_pk>\d+)/product/(?P<product_pk>\d+)/remove/$',
+        view=BundleRemoveProductView.as_view(),
+        name='stock.bundle.product.remove'
+        ),
     url(regex=r'^bundle/(?P<pk>\d+)/update/$',
         view=BundleUpdateView.as_view(),
         name='stock.bundle.update'

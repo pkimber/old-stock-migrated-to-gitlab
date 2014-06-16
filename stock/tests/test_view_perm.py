@@ -43,8 +43,32 @@ class TestViewPerm(PermTestCase):
         url = reverse('stock.bundle.create')
         self.assert_staff_only(url)
 
+    def test_bundle_detail(self):
+        url = reverse(
+            'stock.bundle.detail',
+            kwargs=dict(pk=self.special_offer.pk)
+        )
+        self.assert_staff_only(url)
+
     def test_bundle_list(self):
         url = reverse('stock.bundle.list')
+        self.assert_staff_only(url)
+
+    def test_bundle_product_add(self):
+        url = reverse(
+            'stock.bundle.product.add',
+            kwargs=dict(pk=self.special_offer.pk)
+        )
+        self.assert_staff_only(url)
+
+    def test_bundle_product_remove(self):
+        url = reverse(
+            'stock.bundle.product.remove',
+            kwargs=dict(
+                bundle_pk=self.special_offer.pk,
+                product_pk=self.pencil.pk,
+            )
+        )
         self.assert_staff_only(url)
 
     def test_bundle_update(self):
