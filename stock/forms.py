@@ -31,6 +31,7 @@ class BundleForm(RequiredFieldForm):
             'slug',
             'product',
             'price',
+            'legacy',
         )
 
 

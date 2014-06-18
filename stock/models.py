@@ -60,7 +60,7 @@ class Product(TimeStampedModel):
     legacy = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ('category__slug', 'name')
+        ordering = ('legacy', 'category__slug', 'name')
         verbose_name = 'Product'
         verbose_name_plural = 'Product'
 
@@ -81,9 +81,11 @@ class ProductBundle(TimeStampedModel):
     product = models.ForeignKey(Product, related_name='+')
     price = models.DecimalField(max_digits=8, decimal_places=2)
     bundle = models.ManyToManyField(Product, related_name='bundles')
+    # option to hide legacy bundles
+    legacy = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('legacy', 'product__name', 'name',)
         verbose_name = 'Product bundle'
         verbose_name_plural = 'Product bundles'
 

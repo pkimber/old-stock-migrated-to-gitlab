@@ -28,12 +28,26 @@
               <td>
                 <a href="{% url 'stock.bundle.update' object.pk %}">
                   <i class="fa fa-edit"></i>
-                  <strong>{{ object.name }}</strong>
+                  <strong>
+                    {% if object.legacy %}<strike>{% endif %}
+                      {{ object.name }}
+                    {% if object.legacy %}</strike>{% endif %}
+                  </strong>
                 </a>
               </td>
               <td>
               </td>
             </tr>
+            {% if object.legacy %}
+            <tr valign="top">
+              <td>Legacy</td>
+              <td>
+                <strong>This is a legacy bundle</strong>
+              </td>
+              <td>
+              </td>
+            </tr>
+            {% endif %}
             <tr valign="top">
               <td>Slug</td>
               <td>

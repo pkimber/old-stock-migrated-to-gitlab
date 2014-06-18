@@ -40,22 +40,29 @@
             {% for o in object_list %}
               <tr valign="top">
                 <td>
-                  {% if o.product.legacy %}
+                  {% if o.legacy or o.product.legacy %}
                     <del>
                   {% endif %}
                   <a href="{% url 'stock.bundle.detail' o.pk %}">
                     {{ o.name }}
                   </a>
-                  {% if o.legacy %}
+                  {% if o.legacy or o.product.legacy %}
                     </del>
+                    <br />
                     <small>
-                      (This bundle is for a legacy product)
+                      {% if o.legacy %}
+                        (This is a legacy bundle)
+                      {% else %}
+                        (This bundle is for a legacy product)
+                      {% endif %}
                     </small>
                   {% endif %}
                   <br />
                   <small>
                     Bundle for
+                    <strong>
                     {{ o.product.name }}
+                    </strong>
                   </small>
                   {% if o.description %}
                     <br />
@@ -64,8 +71,12 @@
                 </td>
                 <td>
                   {% for p in o.bundle.all %}
-                    {{ forloop.counter }})
-                    {{ p }}
+                    <small>
+                      {{ forloop.counter }})
+                      {% if p.legacy %}<strike>{% endif %}
+                      {{ p }}
+                      {% if p.legacy %}</strike>{% endif %}
+                    </small>
                     <br />
                   {% endfor %}
                 </td>
