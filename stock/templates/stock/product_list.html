@@ -11,23 +11,27 @@
 {% block content %}
   <div class="pure-g">
     <div class="pure-u-1">
+      <div class="pure-menu pure-menu-open pure-menu-horizontal">
+        <ul>
+          <li>
+            <a href="{% url 'stock.product.create' %}">
+              <i class="fa fa-barcode"></i>
+              Add product
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'stock.bundle.list' %}">
+              <i class="fa fa-cubes"></i>
+              Bundles
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pure-g">
+    <div class="pure-u-1">
       <div class="l-box">
-        <div class="pure-menu pure-menu-open pure-menu-horizontal">
-          <ul>
-            <li>
-              <a href="{% url 'stock.product.create' %}">
-                <i class="fa fa-barcode"></i>
-                Add product
-              </a>
-            </li>
-            <li>
-              <a href="{% url 'stock.bundle.list' %}">
-                <i class="fa fa-cubes"></i>
-                Bundles
-              </a>
-            </li>
-          </ul>
-        </div>
         <table class="pure-table pure-table-bordered">
           <thead>
             <tr>
