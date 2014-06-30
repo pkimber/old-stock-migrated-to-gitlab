@@ -37,7 +37,10 @@ class BundleCreateView(
     model = ProductBundle
 
     def get_success_url(self):
-        return reverse('stock.bundle.list')
+        return reverse(
+            'stock.bundle.detail',
+            kwargs=dict(pk=self.object.pk, )
+        )
 
 
 class BundleDetailView(
