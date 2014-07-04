@@ -26,7 +26,7 @@ class TestViewPerm(PermTestCase):
         self.pencil = init_product(
             'Pencil', 'pencil', '', Decimal('1.32'), stationery
         )
-        pen = init_product(
+        init_product(
             'Pen', 'pen', '', Decimal('1.00'), stationery
         )
         #self.special_offer = init_product_bundle(

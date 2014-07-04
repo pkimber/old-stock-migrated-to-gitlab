@@ -7,10 +7,7 @@ import factory
 
 from factory import SubFactory
 from factory.django import DjangoModelFactory
-from factory.fuzzy import (
-    FuzzyDecimal,
-    FuzzyText,
-)
+from factory.fuzzy import FuzzyDecimal
 
 from stock.models import (
     Product,
