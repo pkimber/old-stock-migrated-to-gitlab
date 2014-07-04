@@ -7,7 +7,6 @@ from base.tests.model_maker import clean_and_save
 
 from stock.models import (
     Product,
-    ProductBundle,
     ProductCategory,
     ProductType,
 )
@@ -24,15 +23,15 @@ def make_product(name, slug, price, category, **kwargs):
     return clean_and_save(Product(**defaults))
 
 
-def make_product_bundle(name, slug, product, price, **kwargs):
-    defaults = dict(
-        name=name,
-        slug=slugify(slug),
-        product=product,
-        price=price,
-    )
-    defaults.update(kwargs)
-    return clean_and_save(ProductBundle(**defaults))
+#def make_product_bundle(name, slug, product, price, **kwargs):
+#    defaults = dict(
+#        name=name,
+#        slug=slugify(slug),
+#        product=product,
+#        price=price,
+#    )
+#    defaults.update(kwargs)
+#    return clean_and_save(ProductBundle(**defaults))
 
 
 def make_product_category(name, slug, product_type, **kwargs):
