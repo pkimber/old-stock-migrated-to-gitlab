@@ -21,7 +21,10 @@ class ProductTypeFactory(DjangoModelFactory):
     class Meta:
         model = ProductType
 
-    slug = slugify(factory.Sequence(lambda n: 'type{}'.format(n)))
+    @factory.sequence
+    def slug(n):
+        #slug = slugify(factory.Sequence(lambda n: 'type_{:02d}'.format(n)))
+        return 'type_{:02d}'.format(n)
 
 
 class ProductCategoryFactory(DjangoModelFactory):
@@ -30,7 +33,10 @@ class ProductCategoryFactory(DjangoModelFactory):
         model = ProductCategory
 
     product_type = SubFactory(ProductTypeFactory)
-    slug = slugify(factory.Sequence(lambda n: 'category{}'.format(n)))
+    @factory.sequence
+    def slug(n):
+        #slug = slugify(factory.Sequence(lambda n: 'category_{:02d}'.format(n)))
+        return 'category_{:02d}'.format(n)
 
 
 class ProductFactory(DjangoModelFactory):
@@ -40,4 +46,8 @@ class ProductFactory(DjangoModelFactory):
 
     category = SubFactory(ProductCategoryFactory)
     price = FuzzyDecimal(10.00, 100.00)
-    slug = slugify(factory.Sequence(lambda n: 'product{}'.format(n)))
+
+    @factory.sequence
+    def slug(n):
+        #slug = slugify(factory.Sequence(lambda n: 'product_{:02d}'.format(n)))
+        return 'product_{:02d}'.format(n)
