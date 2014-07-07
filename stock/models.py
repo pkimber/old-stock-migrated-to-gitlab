@@ -43,6 +43,13 @@ class ProductCategory(TimeStampedModel):
 reversion.register(ProductCategory)
 
 
+class ProductManager(models.Manager):
+
+    def product_type(self, slug):
+        """List of all products which have a type (slug)."""
+        return Product.objects.filter(category__product_type__slug=slug)
+
+
 class Product(TimeStampedModel):
     """List of products and their price.
 
@@ -58,6 +65,7 @@ class Product(TimeStampedModel):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     # option to hide legacy products
     legacy = models.BooleanField(default=False)
+    objects = ProductManager()
 
     class Meta:
         ordering = ('legacy', 'category__slug', 'name')

@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.template.defaultfilters import slugify
 
 import factory
+# https://github.com/rbarrois/factory_boy/issues/138
+from factory import fuzzy
 
 from stock.models import (
     Product,
@@ -40,7 +42,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
         model = Product
 
     category = factory.SubFactory(ProductCategoryFactory)
-    price = factory.fuzzy.FuzzyDecimal(10.00, 100.00)
+    price = fuzzy.FuzzyDecimal(10.00, 100.00)
 
     @factory.sequence
     def slug(n):
