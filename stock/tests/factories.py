@@ -45,5 +45,9 @@ class ProductFactory(factory.django.DjangoModelFactory):
     price = fuzzy.FuzzyDecimal(10.00, 100.00)
 
     @factory.sequence
+    def name(n):
+        return 'product_name_{:02d}'.format(n)
+
+    @factory.sequence
     def slug(n):
-        return 'product_{:02d}'.format(n)
+        return 'product_slug_{:02d}'.format(n)
