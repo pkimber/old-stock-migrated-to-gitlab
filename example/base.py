@@ -141,6 +141,7 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
+    'compressor',
     'reversion',
     'south',
 )
@@ -182,6 +183,9 @@ LOGGING = {
         },
     }
 }
+
+# django-compressor
+COMPRESS_ENABLED = False # defaults to the opposite of DEBUG
 
 FTP_STATIC_DIR = None
 FTP_STATIC_URL = None
