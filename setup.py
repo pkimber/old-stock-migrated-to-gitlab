@@ -19,7 +19,7 @@ def get_readme():
 
 
 setup(
-    name='pkimber-stock',
+    name='kb-stock',
     packages=['stock', 'stock.migrations', 'stock.tests', 'stock.management', 'stock.management.commands'],
     package_data={
         'stock': [
@@ -28,7 +28,7 @@ setup(
             'templates/stock/*.*',
         ],
     },
-    version='0.1.10',
+    version='0.1.11',
     description='stock',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
