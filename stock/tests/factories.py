@@ -1,8 +1,6 @@
 # -*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.template.defaultfilters import slugify
-
 import factory
 # https://github.com/rbarrois/factory_boy/issues/138
 from factory import fuzzy
