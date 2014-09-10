@@ -25,12 +25,20 @@ class ProductType(TimeStampedModel):
 reversion.register(ProductType)
 
 
+class ProductCategoryManager(models.Manager):
+
+    def product_type(self, slug):
+        """List of all categories with the selected product type (slug)."""
+        return self.model.objects.filter(product_type__slug=slug)
+
+
 class ProductCategory(TimeStampedModel):
     """Category of product e.g. craft or gardening course."""
 
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     product_type = models.ForeignKey(ProductType)
+    objects = ProductCategoryManager()
 
     class Meta:
         ordering = ('name',)
@@ -47,7 +55,7 @@ class ProductManager(models.Manager):
 
     def product_type(self, slug):
         """List of all products which have a type (slug)."""
-        return Product.objects.filter(category__product_type__slug=slug)
+        return self.model.objects.filter(category__product_type__slug=slug)
 
 
 class Product(TimeStampedModel):

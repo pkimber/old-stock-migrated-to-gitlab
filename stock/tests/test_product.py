@@ -1,36 +1,36 @@
 # -*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
-from decimal import Decimal
-
 from django.db import IntegrityError
 from django.test import TestCase
 
-from stock.tests.model_maker import (
-    make_product,
-    make_product_category,
-    make_product_type,
+from stock.models import Product
+
+from .factories import (
+    ProductCategoryFactory,
+    ProductFactory,
+    ProductTypeFactory,
 )
 
 
 class TestProduct(TestCase):
 
-    def setUp(self):
-        stock = make_product_type('Stock', 'stock')
-        self.stationery = make_product_category(
-            'Stationery', 'stationery', stock
-        )
-
-    def test_make(self):
-        make_product('Pencil', 'pencil', Decimal('1.32'), self.stationery)
-
     def test_no_duplicate(self):
-        make_product('Pencil', 'pencil', Decimal('1.32'), self.stationery)
+        product = ProductFactory()
         self.assertRaises(
             IntegrityError,
-            make_product,
-            'Pencil',
-            'pencil',
-            Decimal('1.00'),
-            self.stationery,
+            ProductFactory,
+            slug=product.slug,
         )
+
+    def test_product_type(self):
+        product_type = ProductTypeFactory()
+        category = ProductCategoryFactory(product_type=product_type)
+        ProductFactory()
+        ProductFactory(category=category)
+        ProductFactory(category=category)
+        products = Product.objects.product_type(product_type.slug)
+        self.assertEqual(2, products.count())
+
+    def test_str(self):
+        str(ProductFactory())
