@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 """ Django settings """
 import os
 
@@ -140,6 +138,7 @@ LOCAL_APPS = (
     'base',
     'example',
     'login',
+    'mail',
     'stock',
 )
 
