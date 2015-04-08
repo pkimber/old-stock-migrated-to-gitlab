@@ -1,9 +1,7 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.test import TestCase
 
-from example.management.commands import demo_data_stock
+from example_stock.management.commands import demo_data_stock
 
 from stock.management.commands import init_app_stock
 

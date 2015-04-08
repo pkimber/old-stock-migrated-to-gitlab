@@ -1,7 +1,7 @@
 Stock
 *****
 
-Django application for an stock management (products etc).
+Django application for stock management (products etc).
 
 Install
 =======
@@ -21,26 +21,16 @@ Virtual Environment
 Testing
 =======
 
-::
-
-  find . -name '*.pyc' -delete
-  py.test -x
+https://www.pkimber.net/howto/python/testing/py_test.html
 
 Usage
 =====
 
 ::
 
-  py.test -x && \
-      touch temp.db && rm temp.db && \
-      django-admin.py syncdb --noinput && \
-      django-admin.py migrate --all --noinput && \
-      django-admin.py demo_data_login && \
-      django-admin.py init_app_stock && \
-      django-admin.py demo_data_stock && \
-      django-admin.py runserver
+  ./init_dev.sh
 
 Release
 =======
 
-https://django-dev-and-deploy-using-salt.readthedocs.org/
+https://www.pkimber.net/open/
