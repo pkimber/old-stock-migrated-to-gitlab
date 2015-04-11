@@ -73,6 +73,15 @@ def init_product_category(name, slug, product_type):
     result = None
     try:
         result = ProductCategory.objects.get(slug=slug)
+        update = False
+        if result.name != name:
+            result.name = name or ''
+            update = True
+        if result.product_type.slug != product_type.slug:
+            result.product_type = product_type
+            update = True
+        if update:
+            result.save()
     except ProductCategory.DoesNotExist:
         result = make_product_category(name, slug, product_type)
     return result
@@ -82,6 +91,9 @@ def init_product_type(name, slug):
     result = None
     try:
         result = ProductType.objects.get(slug=slug)
+        if result.name != name:
+            result.name = name or ''
+            result.save()
     except ProductType.DoesNotExist:
         result = make_product_type(name, slug)
     return result
