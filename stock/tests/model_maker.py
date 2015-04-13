@@ -12,15 +12,15 @@ from stock.models import (
 )
 
 
-def make_product(name, slug, price, category, **kwargs):
-    defaults = dict(
-        name=name,
-        slug=slugify(slug),
-        price=price,
-        category=category,
-    )
-    defaults.update(kwargs)
-    return clean_and_save(Product(**defaults))
+#def make_product(name, slug, price, category, **kwargs):
+#    defaults = dict(
+#        name=name,
+#        slug=slugify(slug),
+#        price=price,
+#        category=category,
+#    )
+#    defaults.update(kwargs)
+#    return clean_and_save(Product(**defaults))
 
 
 #def make_product_bundle(name, slug, product, price, **kwargs):

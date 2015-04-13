@@ -6,11 +6,32 @@ import reversion
 from base.model_utils import TimeStampedModel
 
 
+class ProductTypeManager(models.Manager):
+
+    def create_type(self, slug, name):
+        obj = self.model(
+            slug=slug,
+            name=name,
+        )
+        obj.save()
+        return obj
+
+    def init_type(self, slug, name):
+        try:
+            obj = self.model.objects.get(slug=slug)
+            obj.name = name
+            obj.save()
+        except self.model.DoesNotExist:
+            obj = self.create_type(slug, name)
+        return obj
+
+
 class ProductType(TimeStampedModel):
     """Type of product e.g. course or membership."""
 
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
+    objects = ProductTypeManager()
 
     class Meta:
         ordering = ('name',)
@@ -24,6 +45,25 @@ reversion.register(ProductType)
 
 
 class ProductCategoryManager(models.Manager):
+
+    def create_category(self, slug, name, product_type):
+        obj = self.model(
+            slug=slug,
+            name=name,
+            product_type=product_type,
+        )
+        obj.save()
+        return obj
+
+    def init_category(self, slug, name, product_type):
+        try:
+            obj = self.model.objects.get(slug=slug)
+            obj.name = name
+            obj.product_type = product_type
+            obj.save()
+        except self.model.DoesNotExist:
+            obj = self.create_category(slug, name, product_type)
+        return obj
 
     def product_type(self, slug):
         """List of all categories with the selected product type (slug)."""
@@ -50,6 +90,29 @@ reversion.register(ProductCategory)
 
 
 class ProductManager(models.Manager):
+
+    def create_product(self, slug, name, description, price, category):
+        obj = self.model(
+            slug=slug,
+            name=name,
+            description=description,
+            price=price,
+            category=category,
+        )
+        obj.save()
+        return obj
+
+    def init_product(self, slug, name, description, price, category):
+        try:
+            obj = self.model.objects.get(slug=slug)
+            obj.name = name
+            obj.description = description
+            obj.price = price
+            obj.category = category
+            obj.save()
+        except self.model.DoesNotExist:
+            obj = self.create_product(slug, name, description, price, category)
+        return obj
 
     def product_type(self, slug):
         """List of all products which have a type (slug)."""

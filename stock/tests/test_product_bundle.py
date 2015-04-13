@@ -1,12 +1,10 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 from decimal import Decimal
 
 from django.test import TestCase
 
+from stock.models import Product
 from stock.tests.model_maker import (
-    make_product,
     make_product_category,
     make_product_type,
 )
@@ -18,21 +16,21 @@ class TestProductBundle(TestCase):
         stock = make_product_type('Stock', 'stock')
         stationery = make_product_category('Stationery', 'stationery', stock)
         # products
-        self.pack_pencils = make_product(
-            'Pack pencils',
+        self.pack_pencils = Product.create_product(
             'pack_pencil',
+            'Pack pencils',
             Decimal('2.00'),
             stationery,
         )
-        self.pen = make_product(
-            'Pen',
+        self.pen = Product.create_product(
             'pen',
+            'Pen',
             Decimal('2.00'),
             stationery,
         )
-        self.pencil = make_product(
-            'Pencil',
+        self.pencil = Product.create_product(
             'pencil',
+            'Pencil',
             Decimal('1.32'),
             stationery,
         )
