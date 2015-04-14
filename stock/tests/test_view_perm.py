@@ -17,8 +17,8 @@ class TestViewPerm(PermTestCase):
 
     def setUp(self):
         default_scenario_login()
-        stock = ProductType.objects.init_type('stock', 'Stock')
-        stationery = ProductCategory.objects.init_category(
+        stock = ProductType.objects.init_product_type('stock', 'Stock')
+        stationery = ProductCategory.objects.init_product_category(
             'stationery', 'Stationery', stock
         )
         self.pencil = Product.objects.init_product(

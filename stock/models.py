@@ -8,7 +8,7 @@ from base.model_utils import TimeStampedModel
 
 class ProductTypeManager(models.Manager):
 
-    def create_type(self, slug, name):
+    def create_product_type(self, slug, name):
         obj = self.model(
             slug=slug,
             name=name,
@@ -16,13 +16,13 @@ class ProductTypeManager(models.Manager):
         obj.save()
         return obj
 
-    def init_type(self, slug, name):
+    def init_product_type(self, slug, name):
         try:
             obj = self.model.objects.get(slug=slug)
             obj.name = name
             obj.save()
         except self.model.DoesNotExist:
-            obj = self.create_type(slug, name)
+            obj = self.create_product_type(slug, name)
         return obj
 
 
@@ -46,7 +46,7 @@ reversion.register(ProductType)
 
 class ProductCategoryManager(models.Manager):
 
-    def create_category(self, slug, name, product_type):
+    def create_product_category(self, slug, name, product_type):
         obj = self.model(
             slug=slug,
             name=name,
@@ -55,14 +55,14 @@ class ProductCategoryManager(models.Manager):
         obj.save()
         return obj
 
-    def init_category(self, slug, name, product_type):
+    def init_product_category(self, slug, name, product_type):
         try:
             obj = self.model.objects.get(slug=slug)
             obj.name = name
             obj.product_type = product_type
             obj.save()
         except self.model.DoesNotExist:
-            obj = self.create_category(slug, name, product_type)
+            obj = self.create_product_category(slug, name, product_type)
         return obj
 
     def product_type(self, slug):
