@@ -28,7 +28,7 @@ setup(
             'templates/stock/*.*',
         ],
     },
-    version='0.1.16',
+    version='0.1.17',
     description='stock',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
