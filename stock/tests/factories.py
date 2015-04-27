@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 import factory
 # https://github.com/rbarrois/factory_boy/issues/138
 from factory import fuzzy
