@@ -11,10 +11,10 @@
 {% block content %}
   <div class="pure-g">
     <div class="pure-u-1">
-      <div class="pure-menu pure-menu-open pure-menu-horizontal">
-        <ul>
-          <li>
-            <a href="{% url 'stock.product.create' %}">
+      <div class="pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item">
+            <a href="{% url 'stock.product.create' %}" class="pure-menu-link">
               <i class="fa fa-barcode"></i>
               Add product
             </a>
