@@ -107,7 +107,8 @@ class ProductManager(models.Manager):
             obj = self.model.objects.get(slug=slug)
             obj.name = name
             obj.description = description
-            obj.price = price
+            # we don't update the price if it is already set
+            # obj.price = price
             obj.category = category
             obj.save()
         except self.model.DoesNotExist:
