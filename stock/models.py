@@ -126,6 +126,7 @@ class Product(TimeStampedModel):
     The 'bundle' field allows us to build a bundle of products
     e.g. a pack of pencils + pens for a cheaper price than buying them
     separately.
+
     """
 
     name = models.CharField(max_length=100)
