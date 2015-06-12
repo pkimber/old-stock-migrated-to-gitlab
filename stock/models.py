@@ -107,7 +107,8 @@ class ProductManager(models.Manager):
             obj = self.model.objects.get(slug=slug)
             obj.name = name
             obj.description = description
-            obj.price = price
+            # we don't update the price if it is already set
+            # obj.price = price
             obj.category = category
             obj.save()
         except self.model.DoesNotExist:
@@ -125,6 +126,7 @@ class Product(TimeStampedModel):
     The 'bundle' field allows us to build a bundle of products
     e.g. a pack of pencils + pens for a cheaper price than buying them
     separately.
+
     """
 
     name = models.CharField(max_length=100)
