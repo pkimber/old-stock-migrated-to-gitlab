@@ -1,4 +1,3 @@
-recursive-include stock/static *
 recursive-include stock/templates *
 
 include LICENSE

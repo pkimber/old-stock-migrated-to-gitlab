@@ -23,12 +23,11 @@ setup(
     packages=['stock', 'stock.migrations', 'stock.tests', 'stock.management', 'stock.management.commands'],
     package_data={
         'stock': [
-            'static/*.*',
             'templates/*.*',
             'templates/stock/*.*',
         ],
     },
-    version='0.1.20',
+    version='0.1.21',
     description='stock',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
@@ -42,6 +41,7 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
+        'Framework :: Django :: 1.8',
         'Topic :: Office/Business :: Scheduling',
     ],
     long_description=get_readme(),
