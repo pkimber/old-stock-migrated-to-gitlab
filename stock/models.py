@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
 
-import reversion
+from reversion import revisions as reversion
 
 from base.model_utils import TimeStampedModel
 
