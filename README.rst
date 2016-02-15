@@ -11,17 +11,19 @@ Virtual Environment
 
 ::
 
-  pyvenv-3.4 --without-pip venv-stock
+  virtualenv --python=python3.4 venv-stock
   source venv-stock/bin/activate
-  wget https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
-  python get-pip.py
+  pip install --upgrade pip
 
   pip install -r requirements/local.txt
 
 Testing
 =======
 
-https://www.pkimber.net/howto/python/testing/py_test.html
+::
+
+  find . -name '*.pyc' -delete
+  py.test -x
 
 Usage
 =====
@@ -33,4 +35,4 @@ Usage
 Release
 =======
 
-https://www.pkimber.net/open/
+https://www.kbsoftware.co.uk/docs/

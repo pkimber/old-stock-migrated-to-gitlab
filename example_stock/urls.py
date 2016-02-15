@@ -8,7 +8,11 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import RedirectView
 
 
-from .views import HomeView
+from .views import (
+    HomeView,
+    SettingsView,
+)
+
 
 admin.autodiscover()
 
@@ -18,6 +22,10 @@ urlpatterns = patterns(
     url(regex=r'^$',
         view=HomeView.as_view(),
         name='project.home'
+        ),
+    url(regex=r'^settings/$',
+        view=SettingsView.as_view(),
+        name='project.settings'
         ),
     url(regex=r'^',
         view=include('login.urls')
