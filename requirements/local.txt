@@ -5,6 +5,7 @@
 -e ../mail
 factory-boy
 psycopg2
+pytest-cov
 pytest-django
 pytest-flakes
 pytest-pep8
