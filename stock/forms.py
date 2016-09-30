@@ -43,11 +43,13 @@ class ProductForm(RequiredFieldForm):
             self.fields[name].widget.attrs.update(
                 {'class': 'pure-input-2-3'}
             )
+        self.fields['name_short'].label = 'Short Name'
 
     class Meta:
         model = Product
         fields = (
             'name',
+            'name_short',
             'slug',
             'category',
             'description',

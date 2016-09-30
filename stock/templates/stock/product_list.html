@@ -25,49 +25,52 @@
   </div>
   <div class="pure-g">
     <div class="pure-u-1">
-      <div class="l-box">
-        <table class="pure-table pure-table-bordered">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Price</th>
+      <table class="pure-table pure-table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for o in object_list %}
+            <tr valign="top">
+              <td>
+                {% if o.legacy %}
+                  <del>
+                {% endif %}
+                <a href="{% url 'stock.product.update' o.pk %}">
+                  <i class="fa fa-edit"></i>
+                  {{ o.name }}
+                </a>
+                {% if o.name_short %}
+                  <small>
+                    ({{ o.name_short }})
+                  </small>
+                {% endif %}
+                {% if o.legacy %}
+                  </del>
+                  <br />
+                  <small>
+                    (This is a legacy product)
+                  </small>
+                {% endif %}
+                {% if o.description %}
+                  <br />
+                  {{ o.description|linebreaksbr }}
+                {% endif %}
+              </td>
+              <td>
+                {{ o.category }}
+              </td>
+              <td>
+                {{ o.price }}
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {% for o in object_list %}
-              <tr valign="top">
-                <td>
-                  {% if o.legacy %}
-                    <del>
-                  {% endif %}
-                  <a href="{% url 'stock.product.update' o.pk %}">
-                    <i class="fa fa-edit"></i>
-                    {{ o.name }}
-                  </a>
-                  {% if o.legacy %}
-                    </del>
-                    <br />
-                    <small>
-                      (This is a legacy product)
-                    </small>
-                  {% endif %}
-                  {% if o.description %}
-                    <br />
-                    {{ o.description|linebreaksbr }}
-                  {% endif %}
-                </td>
-                <td>
-                  {{ o.category }}
-                </td>
-                <td>
-                  {{ o.price }}
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
   </div>
 {% endblock content %}
