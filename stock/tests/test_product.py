@@ -31,5 +31,17 @@ def test_product_type():
 
 
 @pytest.mark.django_db
+def test_short_name():
+    product = ProductFactory(name='Southampton', name_short='Saints')
+    assert 'Saints' == product.short_name
+
+
+@pytest.mark.django_db
+def test_short_name_missing():
+    product = ProductFactory(name='Southampton')
+    assert 'Southampton' == product.short_name
+
+
+@pytest.mark.django_db
 def test_str():
     assert 'Apple' == str(ProductFactory(name='Apple'))

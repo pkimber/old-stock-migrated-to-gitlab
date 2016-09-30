@@ -130,6 +130,7 @@ class Product(TimeStampedModel):
     """
 
     name = models.CharField(max_length=100)
+    name_short = models.CharField(max_length=100, blank=True)
     slug = models.SlugField(unique=True)
     category = models.ForeignKey(ProductCategory)
     description = models.TextField(blank=True)
@@ -145,6 +146,13 @@ class Product(TimeStampedModel):
 
     def __str__(self):
         return '{}'.format(self.name)
+
+    @property
+    def short_name(self):
+        result = self.name_short
+        if not result:
+            result = self.name
+        return result
 
 reversion.register(Product)
 
