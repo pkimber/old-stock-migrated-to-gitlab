@@ -27,7 +27,7 @@ setup(
             'templates/stock/*.*',
         ],
     },
-    version='0.1.23',
+    version='0.1.25',
     description='stock',
     author='Malcolm Dinsmore',
     author_email='zebyea@gmail.com',
