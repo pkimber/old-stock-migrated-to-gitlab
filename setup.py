@@ -20,17 +20,17 @@ def get_readme():
 
 setup(
     name='kb-stock',
-    packages=['stock', 'stock.management', 'stock.management.commands', 'stock.tests', 'stock.migrations'],
+    packages=['stock', 'stock.migrations', 'stock.management', 'stock.management.commands', 'stock.tests'],
     package_data={
         'stock': [
             'templates/*.*',
             'templates/stock/*.*',
         ],
     },
-    version='0.1.25',
+    version='0.1.26',
     description='stock',
-    author='Malcolm Dinsmore',
-    author_email='zebyea@gmail.com',
+    author='Patrick Kimber',
+    author_email='code@pkimber.net',
     url='git@github.com:pkimber/stock.git',
     classifiers=[
         'Development Status :: 1 - Planning',
