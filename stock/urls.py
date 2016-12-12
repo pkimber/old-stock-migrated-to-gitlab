@@ -1,11 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.conf.urls import url
 
-from .views import (
-    ProductCreateView,
-    ProductListView,
-    ProductUpdateView,
-)
+from .views import ProductCreateView, ProductListView, ProductUpdateView
 
 
 urlpatterns = [
