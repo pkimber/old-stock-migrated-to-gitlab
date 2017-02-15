@@ -157,26 +157,26 @@ class Product(TimeStampedModel):
 reversion.register(Product)
 
 
-#class ProductBundle(TimeStampedModel):
-#    """If a product is selected... then display the 'bundle' of products.
+# class ProductBundle(TimeStampedModel):
+#     """If a product is selected... then display the 'bundle' of products.
 #
-#    If a product is selected, then these are the bundles to display.
-#    """
+#     If a product is selected, then these are the bundles to display.
+#     """
 #
-#    name = models.CharField(max_length=100)
-#    slug = models.SlugField(unique=True)
-#    product = models.ForeignKey(Product, related_name='+')
-#    price = models.DecimalField(max_digits=8, decimal_places=2)
-#    bundle = models.ManyToManyField(Product, related_name='bundles')
-#    # option to hide legacy bundles
-#    legacy = models.BooleanField(default=False)
+#     name = models.CharField(max_length=100)
+#     slug = models.SlugField(unique=True)
+#     product = models.ForeignKey(Product, related_name='+')
+#     price = models.DecimalField(max_digits=8, decimal_places=2)
+#     bundle = models.ManyToManyField(Product, related_name='bundles')
+#     # option to hide legacy bundles
+#     legacy = models.BooleanField(default=False)
 #
-#    class Meta:
-#        ordering = ('legacy', 'product__name', 'name',)
-#        verbose_name = 'Product bundle'
-#        verbose_name_plural = 'Product bundles'
+#     class Meta:
+#         ordering = ('legacy', 'product__name', 'name',)
+#         verbose_name = 'Product bundle'
+#         verbose_name_plural = 'Product bundles'
 #
-#    def __str__(self):
-#        return '{}'.format(self.name)
+#     def __str__(self):
+#         return '{}'.format(self.name)
 #
-#reversion.register(ProductBundle)
+# reversion.register(ProductBundle)
