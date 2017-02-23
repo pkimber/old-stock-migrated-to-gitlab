@@ -27,10 +27,10 @@ setup(
             'templates/stock/*.*',
         ],
     },
-    version='0.1.28',
+    version='0.1.29',
     description='stock',
-    author='Patrick Kimber',
-    author_email='code@pkimber.net',
+    author='Malcolm Dinsmore',
+    author_email='code-md@kbsoftware.co.uk',
     url='git@github.com:pkimber/stock.git',
     classifiers=[
         'Development Status :: 1 - Planning',
